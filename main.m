@@ -1,6 +1,44 @@
 % Blade Element Theory
 
 
+% Automating xfoil
+
+function runXfoil(airfoil_name, alpha_seq, Re, output_file)
+    
+    input_data = [
+        airfoil_name,...
+        "",...
+        "PANE",...
+        "OPER",...
+        "VISC "+num2str(Re),...
+        "PACC",...
+        output_file,...
+        "",...
+        "aseq " + alpha_seq,...
+        "1",...
+        "QUIT"
+        ];
+    
+    input_filename = 'input_commands.inp';
+    fid = fopen(input_filename,"w");
+    for i = 1:length(input_data)
+        fprintf(fid,"%s\n",input_data(i));
+    end
+    fclose(fid);
+
+    system([' "C:\Users\deepa\XFOIL6.99\xfoil.exe" <',input_filename]);
+
+
+    data = readmatrix(output_file,'NumHeaderLines',12);
+
+    trimmed_data = data(:,1:3);
+
+    writematrix(trimmed_data, output_file);
+
+
+end
+
+
 % Physical Parameters
 
 rho = 1.225; % Air density at sea level
@@ -13,8 +51,16 @@ omega = 300 * 2*pi/60; % Angular velocity
 N = 20;
 
 
+%Input
+
+airfoil = input('Enter the airfoil name :','s');
+alpha_range = input('Enter the range of alpha values :','s');
+Re = input('Enter the Reynolds number value :','s');
+
+runXfoil(airfoil,alpha_range,Re,'alpha_cl_cd.txt');
+
 % load airfoil data
-data = load('polar_1232.txt');
+data = load('alpha_cl_cd.txt');
 
 alpha_table = data(:,1);
 Cl_table = data(:,2);
