@@ -26,7 +26,7 @@ function runXfoil(airfoil_name, alpha_seq, Re, output_file)
     end
     fclose(fid);
 
-    system([' "C:\Users\deepa\XFOIL6.99\xfoil.exe" <',input_filename]);
+    system(['xfoil.exe <',input_filename]);
 
 
     data = readmatrix(output_file,'NumHeaderLines',12);
@@ -42,13 +42,14 @@ end
 % Physical Parameters
 
 rho = 1.225; % Air density at sea level
-c = 0.05; % chord length
-R = 1; % Blade Radius
-theta = deg2rad(10); % twist angle
-B = 2; % Number of blades
-V_inf = 10; % freestream velocity
-omega = 300 * 2*pi/60; % Angular velocity
-N = 20;
+c = input('Enter the choed length (c):'); % chord length
+R = input('Enter the Blade Radius (R) :'); % Blade Radius
+theta_inp = input('Enter the twist angle (in degrees) :');% twist angle
+theta = deg2rad(theta_inp);
+B = input('Enter the number of blades (B) :'); % Number of blades
+V_inf = input('Enter the free stream velocity (in m/s)'); % freestream velocity
+omega = input('Enter the angular velocity (in rad/s)'); % Angular velocity
+N = input('Enter the number of elements, N :');
 
 
 %Input
