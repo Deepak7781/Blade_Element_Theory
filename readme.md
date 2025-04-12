@@ -43,26 +43,26 @@ The theory assumes that the flow over each blade element is primarily two-dimens
 
 ### 2.Operating Condition Parameters
 
-* Rotational Speed ( $ \omega $ )
+* Rotational Speed ($\omega$)
     * The angular velocity of the rotor
     * Determines the tangential velocity (V<sub>t</sub> = $ \omega $ r), a key component of the resultant velocity affecting lift and drag
 
-* Free stream velocity ($ V_\infty$)
+* Free stream velocity ($V_\infty$)
     * Velocity of the undisturbed fluid approaching the rotor
     * The axial component of velocity, driving the flow through the rotor and affecting power extraction or thrust
 
-* Air density ($ \rho$)
+* Air density ($\rho$)
     * The density of the fluid medium
 
 ### 3.Aerodynamic Parameters
 
-* Resultant Velocity ($ V_{res} $)
+* Resultant Velocity ($V_{res}$)
     * The total velocity seen by each blade element, combining axial (V<sub>a</sub>) and tangential ( V<sub>t</sub>) components.
     * Drives lift and drag calculations
-    * V<sub>res</sub> = $ \sqrt{V_a^2 + V_t^2}$
-    * In BET $ V_a = V_\infty , V_t = \omega r$
+    * V<sub>res</sub> = $\sqrt{V_a^2 + V_t^2}$
+    * In BET $V_a = V_\infty , V_t = \omega r$
 
-* Inflow Angle ($ \phi $)
+* Inflow Angle ($\phi$)
     * The angle between the resultant velocity and the plane of rotation.
     * $ \phi = tan^{-1}\frac{V_a}{V_t}$
 
