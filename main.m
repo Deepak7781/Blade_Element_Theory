@@ -42,8 +42,9 @@ end
 % Physical Parameters
 
 rho = 1.225; % Air density at sea level
-c = input('Enter the choed length (c):'); % chord length
+c = input('Enter the chord length (c):'); % chord length
 R = input('Enter the Blade Radius (R) :'); % Blade Radius
+r_hub = input('Enter the hub radius :');
 theta_inp = input('Enter the twist angle (in degrees) :');% twist angle
 theta = deg2rad(theta_inp);
 B = input('Enter the number of blades (B) :'); % Number of blades
@@ -58,9 +59,10 @@ airfoil = input('Enter the airfoil name :','s');
 alpha_range = input('Enter the range of alpha values :','s');
 Re = input('Enter the Reynolds number value :','s');
 
+% Load airfoil data
 runXfoil(airfoil,alpha_range,Re,'alpha_cl_cd.txt');
 
-% load airfoil data
+
 data = load('alpha_cl_cd.txt');
 
 alpha_table = data(:,1);
@@ -68,17 +70,17 @@ Cl_table = data(:,2);
 Cd_table = data(:,3);
 
 % Discretization
-
-r = linspace(0.1*R,R,N);
+r = linspace(R-r_hub,R,N);
 dr = r(2)-r(1); 
 
-T = 0; Q = 0;
 
+T = 0;  % Thrust
+Q = 0;  % Torque
 
 for i = 1:N
-    V_a = V_inf;
-    V_t = omega*r(i);
-    V_res = sqrt(V_a^2 + V_t^2);
+    V_a = V_inf; % Axial Velocity
+    V_t = omega*r(i); % Tangential Velocity
+    V_res = sqrt(V_a^2 + V_t^2); % Resultant velocity
 
     phi = atan2(V_a,V_t);
     alpha = phi - theta;
