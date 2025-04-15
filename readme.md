@@ -9,6 +9,8 @@ BET treats a rotating blade (like a propeller or turbine blade) as a series of i
 
 The theory assumes that the flow over each blade element is primarily two-dimensional and unaffected by neighbouring elements, simplifying the complex three-dimensional flow around a rotating blade into a more tractacble problem.
 
+[Complete Derivation of BET](https://www.aerodynamics4students.com/propulsion/blade-element-propeller-theory.php)
+
 ## Parameters involved in BET
 
 ### 1. Geometric Parameters
@@ -232,6 +234,12 @@ dQ = B * r(i)*((dL*sin(phi)) + (dD*cos(phi)));
 Lift(L), Drag(D), Torque(Q), Thrust(T) are all calculated for each element.
 
 
+### Work it in Your system
 
+Clone the repositary using the below command
 
+```
+git clone 'https://github.com/Deepak7781/Blade_Element_Theory.git'
+```
 
+And you are ready to go. Run the main.m file in MATLAB.
